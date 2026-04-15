@@ -1,0 +1,9 @@
+# Build artifacts
+**/bin/
+**/obj/
+
+# JetBrains Rider / IntelliJ
+.idea/
+
+# Local Codex workspace files
+.codex

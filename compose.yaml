@@ -1,0 +1,7 @@
+﻿services:
+  dmspaymentevents:
+    image: dmspaymentevents
+    build:
+      context: .
+      dockerfile: DMSPaymentEvents/Dockerfile
+
