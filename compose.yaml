@@ -1,7 +1,25 @@
 ﻿services:
-  dmspaymentevents:
-    image: dmspaymentevents
-    build:
-      context: .
-      dockerfile: DMSPaymentEvents/Dockerfile
-
+  postgres:
+    image: postgres:17
+    container_name: dmspaymentevents-postgres
+    environment:
+      POSTGRES_DB: dmspaymentevents
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    
+  rabbitmq:
+    image: rabbitmq:4-management
+    container_name: dmspaymentevents-rabbitmq
+    environment:
+      RABBITMQ_DEFAULT_USER: guest
+      RABBITMQ_DEFAULT_PASS: guest
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    
+volumes:
+  postgres-data:
